@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Демо распознавания — Amin AI</title>
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="../assets/icon-32.png">
+  <link rel="stylesheet" href="style.css">
+  <meta name="theme-color" content="#0b0b0b">
+  <script defer src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@4.20.0/dist/tf.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@0.8.5/dist/teachablemachine-image.min.js"></script>
+  <script defer src="script.js"></script>
+</head>
+<body>
+  <header>
+    <a href="../" class="back">← Назад</a>
+    <h1>Демо распознавания</h1>
+  </header>
+
+  <main>
+    <div class="controls">
+      <button id="btnStart">Камера</button>
+      <button id="btnStop" disabled>Стоп</button>
+      <label class="file-input">
+        <input type="file" id="fileInput" accept="image/*">
+        Загрузить фото
+      </label>
+      <span class="hint">Положите файлы модели в <code>/demo/model</code></span>
+    </div>
+
+    <div class="view">
+      <video id="webcam" autoplay playsinline muted></video>
+      <canvas id="canvas" class="hidden"></canvas>
+    </div>
+
+    <section id="results">
+      <ul id="labelContainer"></ul>
+    </section>
+  </main>
+
+  <footer>
+    <button id="installBtn" class="install">Установить офлайн</button>
+  </footer>
+
+  <script>
+    let deferredPrompt;
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      document.getElementById('installBtn').style.display = 'inline-flex';
+    });
+    document.getElementById('installBtn').addEventListener('click', async () => {
+      if (!deferredPrompt) return;
+      deferredPrompt.prompt();
+      await deferredPrompt.userChoice;
+      deferredPrompt = null;
+      document.getElementById('installBtn').style.display = 'none';
+    });
+
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => navigator.serviceWorker.register('../sw.js'));
+    }
+  </script>
+</body>
+</html>

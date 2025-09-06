@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AI by Amin Eyvazov — Демонстрация модели</title>
+  <meta name="description" content="Мой проект: обученная модель Teachable Machine превращена в приложение — работает офлайн, распознаёт с камеры.">
+  <link rel="icon" href="assets/icon-32.png">
+  <link rel="manifest" href="site.webmanifest">
+  <meta property="og:title" content="AI by Amin Eyvazov">
+  <meta property="og:description" content="Обученная модель → настоящее приложение. Демонстрация работы офлайн с камеры.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="assets/icon-512.png">
+  <link rel="stylesheet" href="styles.css">
+  <script>
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => navigator.serviceWorker.register('./sw.js'));
+  }
+  </script>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <div class="brand">Amin AI</div>
+      <nav>
+        <a href="#features">Возможности</a>
+        <a href="#about">О проекте</a>
+        <a href="demo/">Демо</a>
+        <a href="privacy.html">Privacy</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="container">
+      <span class="badge">Teachable Machine → Приложение</span>
+      <h1>Моя модель ИИ работает как приложение</h1>
+      <p>Обучил(а) собственную модель и превратил(а) её в офлайн-приложение. Запускается на телефоне, распознаёт в реальном времени с камеры и не требует интернета.</p>
+      <div class="cta">
+        <a class="btn" href="demo/">Открыть демо</a>
+        <a class="btn sec" href="https://github.com" target="_blank" rel="noreferrer">Код и инструкции</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="features" class="section">
+    <div class="container grid">
+      <div class="card">
+        <h3>Распознавание с камеры</h3>
+        <p>Включите камеру и получите предсказания в реальном времени. Поддерживается загрузка фото.</p>
+      </div>
+      <div class="card">
+        <h3>Офлайн режим</h3>
+        <p>После первой загрузки сайт ставится на экран «Домой» и работает без интернета.</p>
+      </div>
+      <div class="card">
+        <h3>Ваши данные — ваши</h3>
+        <p>Изображения обрабатываются прямо на устройстве; ничего не отправляется на сервер.</p>
+      </div>
+      <div class="card">
+        <h3>Просто заменить модель</h3>
+        <p>Положите <span class="kbd">model.json</span>, <span class="kbd">metadata.json</span>, <span class="kbd">weights.bin</span> в <span class="kbd">/demo/model</span>.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="about" class="section">
+    <div class="container">
+      <h2>О проекте</h2>
+      <p>Этот сайт показывает мой путь: от обученной модели в Teachable Machine до реального приложения. Внутри — TensorFlow.js и аккуратная упаковка в PWA (Progressive Web App), чтобы всё работало быстро и офлайн.</p>
+      <p><strong>Автор:</strong> Амин Эйвазов</p>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container small">
+      © 2025 Amin Eyvazov • <a href="terms.html">Terms</a> • <a href="privacy.html">Privacy</a>
+    </div>
+  </footer>
+</body>
+</html>
